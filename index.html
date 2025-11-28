@@ -147,7 +147,7 @@
 
   <!-- Background Music -->
   <audio id="bg-music" loop>
-    <source src="april.mp3" type="audio/mpeg">
+    <source src="byahe.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -173,17 +173,17 @@
   <script>
     const fullMessage = `
 
-April, sa bawat oras na kasama kita, mas lalo kong nararamdaman kung gaano kita kamahal. Kahit may mga sandali na lumalabas ang attitude mo, hindi iyon nagiging dahilan para magbago ang damdamin ko. Sa halip, mas lalo kong nakikita kung gaano ka natatangi at totoo. Ang ugali mo ay bahagi ng pagkatao mo, at iyon ang isa sa mga dahilan kung bakit mas lalo kitang minamahal, dahil hindi ka nagtatago ng tunay mong sarili.  
+April, sama ka sa akin… tara mag-byahe tayo, hindi lang sa mga kalsada kundi sa landas ng ating mga pangarap. Habang tinatahak natin ang bawat daan, sabay din nating tatapusin ang ating pag-aaral. At sa bawat hakbang, gusto kong iparamdam sa’yo na nandito ako, hindi lang bilang manliligaw, kundi bilang kaagapay na handang sumuporta sa lahat ng laban mo.
 
-Ikaw ang nagbibigay ng kulay sa bawat araw ko, ang dahilan ng bawat ngiti at inspirasyon ko. Hindi ko hinahanap ang perpekto, kasi sa’yo ko natagpuan ang pagmamahal na sapat para punuin ang puso ko ng ligaya. At kahit paulit-ulit kong sabihin sa’yo ang mga salitang 'mahal kita,' hindi ako magsasawa, dahil bawat ulit ay galing pa rin sa puso ko.  
+Alam kong may mga oras na mahirap, may mga araw na parang gusto nang sumuko. Pero April, huwag mong kalimutan na may kasama ka. Ako ang magiging sandalan mo kapag napapagod ka, at ako rin ang magpapaalala sa’yo ng lakas na nasa loob mo. Dahil naniniwala ako sa kakayahan mo, at mas lalo kong pinipili na samahan ka hanggang sa marating natin ang tagumpay.
 
-April, sa lahat ng oras, ikaw ang pipiliin ko. Kahit anong ugali mo, ikaw pa rin ang pinakamahalaga sa akin, at ikaw ang tahanan ng puso ko. Mahal na mahal kita, higit pa sa kaya kong ipaliwanag sa salita, at sa bawat araw na dumarating, mas lalo kong pinapatunayan na ikaw ang aking mundo, ang aking inspirasyon, at ang aking walang hanggang pagmamahal. 💖
+Hindi lang ito tungkol sa pagtatapos ng pag-aaral, kundi sa paglalakbay tungo sa mas maliwanag na kinabukasan. At sa byahe na iyon, gusto kong ikaw ang kasama ko—dahil ang pinakamagandang destinasyon ay ang makita kitang masaya, matagumpay, at patuloy na lumilipad.
 `;
 
     function typeText(text, index = 0) {
       if (index <= text.length) {
         document.getElementById("typewriter").innerText = text.slice(0, index);
-        const delay = 60 + Math.random() * 60; // More natural typing speed
+        const delay = 60 + Math.random() * 60; // natural typing speed
         setTimeout(() => typeText(text, index + 1), delay);
       }
     }
@@ -194,14 +194,19 @@ April, sa lahat ng oras, ikaw ang pipiliin ko. Kahit anong ugali mo, ikaw pa rin
       const button = document.getElementById('start-button');
 
       music.play().then(() => {
-        message.style.display = 'block';
-        setTimeout(() => {
-          message.style.opacity = '1';
-        }, 100);
-
         button.style.display = 'none';
-        typeText(fullMessage);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // 23-second delay before showing the message
+        setTimeout(() => {
+          message.style.display = 'block';
+          setTimeout(() => {
+            message.style.opacity = '1';
+          }, 100);
+
+          typeText(fullMessage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 23000); // 23,000 ms = 23 seconds
+
       }).catch(() => {
         alert("Please tap anywhere to enable music 💗");
         document.body.addEventListener('click', () => music.play(), { once: true });
